@@ -1,0 +1,19 @@
+﻿  int_value_operations.c
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(13,2): error C4235: использовано нестандартное расширение: ключевое слово "__asm" данной архитектурой не поддерживается
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(14,8): error C2065: mov: необъявленный идентификатор
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(14,8): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "eax"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(14,11): error C2065: eax: необъявленный идентификатор
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(14,13): error C2059: синтаксическая ошибка: [
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(17,8): error C2065: mov: необъявленный идентификатор
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(17,8): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "res"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\int_value_operations.c(17,16): error C2065: eax: необъявленный идентификатор
+  io.c
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(3,2): error C4235: использовано нестандартное расширение: ключевое слово "__asm" данной архитектурой не поддерживается
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(9,2): error C4235: использовано нестандартное расширение: ключевое слово "__asm" данной архитектурой не поддерживается
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(10,8): error C2065: mov: необъявленный идентификатор
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(10,8): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "eax"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(10,11): error C2065: eax: необъявленный идентификатор
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(11,3): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "sys_write"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\io.c(11,12): error C2065: sys_write: необъявленный идентификатор
+  Source.c
+  Создание кода...
