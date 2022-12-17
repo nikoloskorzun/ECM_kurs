@@ -19,7 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="exec.c" />
+    <ClCompile Include="floating.c" />
+    <ClCompile Include="integers.c" />
     <ClCompile Include="Source.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="exec.h" />
+    <ClInclude Include="floating.h" />
+    <ClInclude Include="integers.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

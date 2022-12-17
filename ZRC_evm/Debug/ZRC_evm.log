@@ -1,5 +1,18 @@
 ﻿  Source.c
-D:\C&C++ projects\ZRC_evm\ZRC_evm\Source.c(78,4): warning C4552: "+": результат выражения не используется
-D:\C&C++ projects\ZRC_evm\ZRC_evm\Source.c(89,18): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,int16_t *,int16_t *)"
-D:\C&C++ projects\ZRC_evm\ZRC_evm\Source.c(89,9): warning C4024: timeit: различные типы для формального и фактического параметров 1
+  exec.c
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(53,21): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,int16_t *,int16_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(53,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(63,33): warning C4013: rand: нет определения; предполагается "extern" с возвратом типа "int"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(68,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *,float32_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(68,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(69,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *,float32_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(69,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(70,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *,float32_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(70,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(71,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *,float32_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(71,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(72,25): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *)"
+D:\C&C++ projects\ZRC_evm\ZRC_evm\exec.c(72,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+  floating.c
+  Создание кода...
   ZRC_evm.vcxproj -> D:\C&C++ projects\ZRC_evm\Debug\ZRC_evm.exe
