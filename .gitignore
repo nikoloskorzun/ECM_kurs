@@ -1,3 +1,6 @@
 *.exe
 *.pdb
 .vs
+Debug
+Release
+x64
