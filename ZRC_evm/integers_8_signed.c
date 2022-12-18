@@ -1,5 +1,5 @@
 #include "integers.h"
-void add8_reg(int _size, int8_t* a, int8_t* b)
+void add8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     /// <summary>
     /// add func for int16_t
@@ -22,7 +22,7 @@ void add8_reg(int _size, int8_t* a, int8_t* b)
     }
 }
 
-void sub8_reg(int _size, int8_t* a, int8_t* b)
+void sub8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     /// <summary>
     /// sub func for int8_t
@@ -46,7 +46,7 @@ void sub8_reg(int _size, int8_t* a, int8_t* b)
 }
 
 
-void mul8_reg(int _size, int8_t* a, int8_t* b)
+void mul8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     /// <summary>
     /// mul func for int8_t
@@ -69,7 +69,7 @@ void mul8_reg(int _size, int8_t* a, int8_t* b)
     }
 }
 
-void div8_reg(int _size, int8_t* a, int8_t* b)
+void div8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     /// <summary>
     /// div func for int8_t
@@ -95,7 +95,7 @@ void div8_reg(int _size, int8_t* a, int8_t* b)
 
 
 
-void neg8_reg(int _size, int8_t* a)
+void neg8_reg_signed(int _size, int8_t* a)
 {
     __asm
     {
@@ -111,7 +111,7 @@ void neg8_reg(int _size, int8_t* a)
 
 }
 
-void NOT8_reg(int _size, int8_t* a)
+void NOT8_reg_signed(int _size, int8_t* a)
 {
     __asm
     {
@@ -125,7 +125,7 @@ void NOT8_reg(int _size, int8_t* a)
     }
 }
 
-void XOR8_reg(int _size, int8_t* a, int8_t* b)
+void XOR8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     __asm
     {
@@ -144,7 +144,7 @@ void XOR8_reg(int _size, int8_t* a, int8_t* b)
 
 }
 
-void OR8_reg(int _size, int8_t* a, int8_t* b)
+void OR8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     __asm
     {
@@ -161,7 +161,7 @@ void OR8_reg(int _size, int8_t* a, int8_t* b)
     }
 }
 
-void AND8_reg(int _size, int8_t* a, int8_t* b)
+void AND8_reg_signed(int _size, int8_t* a, int8_t* b)
 {
     __asm
     {

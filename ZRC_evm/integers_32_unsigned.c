@@ -2,22 +2,8 @@
 
 
 
-void neg32_reg(int _size, int32_t* a)
-{
-    __asm
-    {
-        mov ecx, _size;
-        mov esi, a;
-        CYCLE:
-            mov eax, [esi]
-            NEG eax
-            add esi, 4
-        loop CYCLE;
-    }
-}
 
-
-void NOT32_reg(int _size, int32_t* a)
+void NOT32_reg_unsigned(int _size, int32_t* a)
 {
     __asm
     {
@@ -31,7 +17,7 @@ void NOT32_reg(int _size, int32_t* a)
     }
 }
 
-void XOR32_reg(int _size, int32_t* a, int32_t* b)
+void XOR32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -48,7 +34,7 @@ void XOR32_reg(int _size, int32_t* a, int32_t* b)
     }
 }
 
-void OR32_reg(int _size, int32_t* a, int32_t* b)
+void OR32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -65,7 +51,7 @@ void OR32_reg(int _size, int32_t* a, int32_t* b)
     }
 }
 
-void AND32_reg(int _size, int32_t* a, int32_t* b)
+void AND32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -83,7 +69,7 @@ void AND32_reg(int _size, int32_t* a, int32_t* b)
 }
 
 
-void add32_reg(int _size, int32_t* a, int32_t* b)
+void add32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -101,7 +87,7 @@ void add32_reg(int _size, int32_t* a, int32_t* b)
 }
 
 
-void sub32_reg(int _size, int32_t* a, int32_t* b)
+void sub32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -118,7 +104,7 @@ void sub32_reg(int _size, int32_t* a, int32_t* b)
     }
 }
 
-void mul32_reg(int _size, int32_t* a, int32_t* b)
+void mul32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -128,7 +114,7 @@ void mul32_reg(int _size, int32_t* a, int32_t* b)
         CYCLE:
             mov eax, [esi];
             mov ebx, [edi];
-            imul eax, ebx;
+            mul ebx;
             add esi, 4
             add edi, 4
         loop CYCLE;
@@ -136,7 +122,7 @@ void mul32_reg(int _size, int32_t* a, int32_t* b)
 
 }
 
-void div32_reg(int _size, int32_t* a, int32_t* b)
+void div32_reg_unsigned(int _size, int32_t* a, int32_t* b)
 {
     __asm
     {
@@ -146,8 +132,9 @@ void div32_reg(int _size, int32_t* a, int32_t* b)
         CYCLE:
             mov eax, [esi];
             mov ebx, [edi];
-            cdq;
-            idiv ebx;
+            mov edx, 0
+            //cdq;
+            div ebx;
             add esi, 4
             add edi, 4
         loop CYCLE;
