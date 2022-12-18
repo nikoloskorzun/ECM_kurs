@@ -76,8 +76,8 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int8_t
+        x_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int8_t
 
         do
         {
@@ -122,8 +122,8 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
-        x_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int16_t
+        x_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int16_t
 
         do
         {
@@ -164,8 +164,8 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int16_t
+        x_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int16_t
 
         do
         {
@@ -214,8 +214,8 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int8_t
+        x_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int8_t
 
         do
         {
@@ -259,8 +259,8 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int16_t
+        x_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int16_t
 
         do
         {
@@ -300,8 +300,8 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // ïî÷åìó òî rand äàåò 15 ñëó÷àéíûõ áèò, íó òèïà ïîëîæèòåëüíûå ÷èñëà òîëüêî.
-        y_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // òåïåðü ÷èñëà íà âñåì ïðîìåæóòêå int16_t
+        x_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñ‚Ð¾ rand Ð´Ð°ÐµÑ‚ 15 ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð±Ð¸Ñ‚, Ð½Ñƒ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾.
+        y_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð½Ð° Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ int16_t
 
         do
         {
@@ -343,7 +343,7 @@ void perform_floats() {
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
         /*
-        Ïåðåïèñàòü ýòîò êóñîê êàëà, ñëó÷àéíûå ÷èñëà äîëæíû îõâàòûâàòü âñå çíà÷åíèÿ
+        ÐŸÐµÑ€ÐµÐ¿Ð¸ÑÐ°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ ÐºÑƒÑÐ¾Ðº ÐºÐ°Ð»Ð°, ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¾Ñ…Ð²Ð°Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð²ÑÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ
             
             #TODO
 
@@ -360,7 +360,7 @@ void perform_floats() {
     timeit(add_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(mul_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);//õîðîøî ÷òî íå  ëîìàåòñÿ ïðè äåëåíèè íà íîëü.
+    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);//Ñ…Ð¾Ñ€Ð¾ÑˆÐ¾ Ñ‡Ñ‚Ð¾ Ð½Ðµ  Ð»Ð¾Ð¼Ð°ÐµÑ‚ÑÑ Ð¿Ñ€Ð¸ Ð´ÐµÐ»ÐµÐ½Ð¸Ð¸ Ð½Ð° Ð½Ð¾Ð»ÑŒ.
     // unar
     timeit(sqrt_floating, "SQRT OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     timeit(l2_floating, "LOG2 OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
