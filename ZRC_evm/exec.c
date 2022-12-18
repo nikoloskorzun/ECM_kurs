@@ -14,6 +14,10 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
     int startup_ms, end_ms;
     double time_spent = 0.0;
 
+
+    char format1[] = "%i. %s";
+    char format2[] = "\n\t\tTIME IS %i\n";
+
     __asm {
         CMP argcount, 0
         JE ZERO_ARG
@@ -46,10 +50,35 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
         call clock; get old ticks
         mov end_ms, eax;
 
+
+        mov eax, text_hint
+        push eax
+        mov eax, loop_number
+        push eax
+        lea eax, format1
+        push eax
+
+        call printf
+        add esp, 12;
+
+        mov eax, end_ms
+        mov ebx, startup_ms
+        sub eax, ebx
+        push eax
+        lea eax, format2
+        push eax
+        call printf
+        add esp, 8;
+
+
+
+
+
+
+        inc loop_number
     }
-    loop_number++;
-    printf("%i. %s", loop_number, text_hint);
-    printf("\n\t\tTIME IS %i\n", (end_ms - startup_ms));
+    //printf("%i. %s", loop_number, text_hint);
+    //printf("\n\t\tTIME IS %i\n", (end_ms - startup_ms));
 }
 
 
@@ -76,8 +105,8 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); // теперь числа на всем промежутке int8_t
+        x_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1);
+        y_8[i] = (int8_t)(((rand()) % (UINT8_MAX)) + INT8_MIN + 1); 
 
         do
         {
@@ -122,12 +151,12 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
-        x_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_16[i] = (int16_t)(((rand()<<16 + rand()) % (UINT16_MAX )) + INT16_MIN + 1); // теперь числа на всем промежутке int16_t
+        x_16[i] = (int16_t)(((((rand() % 2) << 15) + rand()) % (UINT16_MAX )) + INT16_MIN + 1);
+        y_16[i] = (int16_t)(((((rand() % 2) << 15) + rand()) % (UINT16_MAX )) + INT16_MIN + 1);
 
         do
         {
-            x_for_div_16[i] = (int16_t)(((rand() << 16 + rand()) % (UINT16_MAX)) + INT16_MIN + 1);
+            x_for_div_16[i] = (int16_t)(((((rand()%2) << 15) + rand()) % (UINT16_MAX)) + INT16_MIN + 1);
         } while (!x_for_div_16[i]);
         
     }
@@ -164,12 +193,12 @@ void perform_signed_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1); // теперь числа на всем промежутке int16_t
-
+        x_32[i] = (int32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)) + INT32_MIN + 1);
+        y_32[i] = (int32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)) + INT32_MIN + 1);
+        
         do
         {
-            x_for_div_32[i] = (int32_t)(((rand() << 16 + rand()) % (UINT32_MAX)) + INT32_MIN + 1);
+            x_for_div_32[i] = (int32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)) + INT32_MIN + 1);
         } while (!x_for_div_32[i]);
 
     }
@@ -214,8 +243,8 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); // теперь числа на всем промежутке int8_t
+        x_8[i] = (uint8_t)(((rand()) % (UINT8_MAX))); 
+        y_8[i] = (uint8_t)(((rand()) % (UINT8_MAX)));
 
         do
         {
@@ -259,12 +288,12 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX))); // теперь числа на всем промежутке int16_t
+        x_16[i] = (uint16_t)(((((rand() % 2) << 15) + rand()) % (UINT16_MAX)));
+        y_16[i] = (uint16_t)(((((rand() % 2) << 15) + rand()) % (UINT16_MAX)));
 
         do
         {
-            x_for_div_16[i] = (uint16_t)(((rand() << 16 + rand()) % (UINT16_MAX)) );
+            x_for_div_16[i] = (uint16_t)(((((rand() % 2) << 15) + rand()) % (UINT16_MAX)) );
         } while (!x_for_div_16[i]);
 
     }
@@ -300,12 +329,12 @@ void perform_unsigned_integers()
 
     for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // почему то rand дает 15 случайных бит, ну типа положительные числа только.
-        y_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX))); // теперь числа на всем промежутке int16_t
+        x_32[i] = (uint32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)));
+        y_32[i] = (uint32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)));
 
         do
         {
-            x_for_div_32[i] = (uint32_t)(((rand() << 16 + rand()) % (UINT32_MAX)));
+            x_for_div_32[i] = (uint32_t)((((rand() << 17) + ((rand() % 4) << 15) + rand()) % (UINT32_MAX)));
         } while (!x_for_div_32[i]);
 
     }
@@ -342,25 +371,20 @@ void perform_floats() {
     
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
-        /*
-        Переписать этот кусок кала, случайные числа должны охватывать все значения
-            
-            #TODO
-
-
         
-        */
-        x_f[i] = (float32_t)rand();
-        x_f[i] += (float32_t)(rand() % 100) / 100;
-        y_f[i] = (float32_t)rand();
-        y_f[i] += (float32_t)(rand() % 100) / 100;
+        
+        
+        x_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) / (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
+        y_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) / (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
+
+
 
     }
     // binar
     timeit(add_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(mul_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);//хорошо что не  ломается при делении на ноль.
+    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     // unar
     timeit(sqrt_floating, "SQRT OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     timeit(l2_floating, "LOG2 OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
