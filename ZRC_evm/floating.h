@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __FLOATING__
 #define __FLOATING__
 
