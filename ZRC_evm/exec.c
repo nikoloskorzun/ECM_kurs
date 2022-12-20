@@ -9,7 +9,7 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
     /// <param name="argcount">count of arguments</param>
     /// <param name="">FUNCTION UNNECESSORY-ARGUMENTS</param>
     /// loop number is a counter of usages of timeit function
-    static int loop_number = 0;
+    static int loop_number = 1;
     int accum = 0;
     int startup_ms, end_ms;
     double time_spent = 0.0;
@@ -365,21 +365,29 @@ void perform_unsigned_integers()
 
 
 void perform_floats() {
-    float *x_f, *y_f;
+    float32_t *x_f, *y_f;
     x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
     y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
+    double64_t* x_d, *y_d;
+    x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+    y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
     
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
         
         
         
-        x_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) / (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
-        y_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) / (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
-
+        x_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) 
+                                                    / 
+                (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
+        y_f[i] = (float)(((double)((rand() << 17) + ((rand() % 4) << 15) + rand()) 
+                                                / 
+                (double)(UINT32_MAX)) * (((double)(FLT_MAX)) + (double)(FLT_MAX)) + (double)(-FLT_MIN));
 
 
     }
+
+    printf("float point [Float 32 bit]\n");
     // binar
     timeit(add_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
@@ -389,9 +397,41 @@ void perform_floats() {
     timeit(sqrt_floating, "SQRT OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     timeit(l2_floating, "LOG2 OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     timeit(ln_floating, "LN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    // trigan
+    timeit(sin_floating, "SIN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    timeit(tan_floating, "TAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    timeit(atan_floating, "ATAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     
+    // erase Float
     free(x_f);
     free(y_f);
+    printf("Double [Double 64 bit]\n");
+
+    // allocate new peace of data
+    for (int i = 0; i < NumberOfElementsArray; i++) {
+        x_d[i] = rand();
+        y_d[i] = rand();
+    }
+
+    // double
+    timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+
+    // binar
+    timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_double, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_double, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_double, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
+    // unar
+    timeit(sqrt_double, "SQRT OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    timeit(l2_double, "LOG2 OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    timeit(ln_double, "LN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    // trigan
+    timeit(sin_double, "SIN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    timeit(tan_double, "TAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    timeit(atan_double, "ATAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+
+    free(x_d);
+    free(y_d);
 }
 
 

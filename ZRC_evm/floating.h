@@ -16,6 +16,23 @@ void div_floating(int _size, float32_t* a, float32_t* b);
 void sqrt_floating(int _size, float32_t* a);
 void l2_floating(int _size, float32_t* a);
 void ln_floating(int _size, float32_t* a);
+// trigan
+void sin_floating(int _size, float32_t* a);
+void tan_floating(int _size, float32_t* a);
+void atan_floating(int _size, float32_t* a);
 
+// double arithmetics
+void add_double(int size, double64_t* a, double64_t b);
+void sub_double(int _size, double64_t* a, double64_t* b);
+void mul_double(int _size, double64_t* a, double64_t* b);
+void div_double(int _size, double64_t* a, double64_t* b);
+// complex arithmetics
+void sqrt_double(int _size, double64_t* a);
+void l2_double(int _size, double64_t* a);
+void ln_double(int _size, double64_t* a);
+// trigan
+void sin_double(int _size, double64_t* a);
+void tan_double(int _size, double64_t* a);
+void atan_double(int _size, double64_t* a);
 
 #endif // !__FLOATING__

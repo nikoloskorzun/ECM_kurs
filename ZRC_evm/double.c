@@ -1,46 +1,45 @@
 #include "floating.h"
 
-
-void add_floating(int _size, float32_t* a, float32_t* b) {
+void add_double(int _size, double64_t* a, double64_t* b) {
 	__asm {
-		finit				; init co-processor
+		finit; init co - processor
 		mov eax, a;
 		mov ebx, b;
 		mov ecx, _size;
-		Addition:
-			// place floating into floating register
-			fld		[eax]	; load a[i] into co-proc
-			fld		[ebx]	; load b[i] into co-proc
-			fadd			; sum in ST
-			FSTP	st(0)	;
-			
-			add eax, 4		;
-			add ebx, 4		;
+	Addition:
+		// place floating into floating register
+		fld[eax]; load a[i] into co - proc
+		fld[ebx]; load b[i] into co - proc
+		fadd; sum in ST
+		FSTP	st(0);
 
-		loop Addition;
+		add eax, 8;
+		add ebx, 8;
+
+	loop Addition;
 	}
 }
 
-void sub_floating(int _size, float32_t* a, float32_t* b)
+void sub_double(int _size, double64_t* a, double64_t* b)
 {
 	__asm {
-		finit				; init co - processor
-		mov eax, a			;
-		mov ebx, b			;
-		mov ecx, _size		;
-		Subtraction:
+		finit; init co - processor
+		mov eax, a;
+		mov ebx, b;
+		mov ecx, _size;
+	Subtraction:
 		// place floating into floating register
-			fld[eax]		; load a[i] into co - proc
-			fld[ebx]		; load b[i] into co - proc
-			fsub			; sum in ST
-			FSTP	st(0)	;
-			add eax, 4		;
-			add ebx, 4		;
-		loop Subtraction;
+		fld[eax]; load a[i] into co - proc
+		fld[ebx]; load b[i] into co - proc
+		fsub; sum in ST
+		FSTP	st(0);
+		add eax, 8;
+		add ebx, 8;
+	loop Subtraction;
 	}
 }
 
-void mul_floating(int _size, float32_t* a, float32_t* b)
+void mul_double(int _size, double64_t* a, double64_t* b)
 {
 	__asm {
 		finit			; init co-proc
@@ -53,13 +52,14 @@ void mul_floating(int _size, float32_t* a, float32_t* b)
 			fld		[ebx]	; load b[i] into co - proc
 			fmul			; multiply
 			FSTP	st(0)	;
-			add eax, 4		;
-			add ebx, 4		;
+			add eax, 8		;
+			add ebx, 8		;
 		loop Multiplication;
 	}
 }
 
-void div_floating(int _size, float32_t* a, float32_t* b) {
+void div_double(int _size, double64_t* a, double64_t* b)
+{
 	__asm {
 		finit; init co - proc
 		mov eax, a;
@@ -71,20 +71,14 @@ void div_floating(int _size, float32_t* a, float32_t* b) {
 		fld		[ebx]; load b[i] into co - proc
 		fdiv		 ; division
 		FSTP	st(0);
-		add eax, 4;
-		add ebx, 4;
+		add eax, 8;
+		add ebx, 8;
 	loop Division;
 	}
 }
 
-void sqrt_floating(int _size, float32_t* a)
+void sqrt_double(int _size, double64_t* a)
 {
-	/// <summary>
-	/// SOMETIMES THERE IS NEGATIVE a[i]
-	/// HANDLE EXCEPTION?
-	/// </summary>
-	/// <param name="_size"></param>
-	/// <param name="a"></param>
 	__asm {
 		finit			; init co - proc
 		mov eax, a		;
@@ -95,18 +89,13 @@ void sqrt_floating(int _size, float32_t* a)
 		fld	[eax]		; load a[i] into co - proc
 		fsqrt			; get sqrt and replace st(i) on stack pos with result
 		FSTP st(0)		;
-		add eax, 4		;
+		add eax, 8		;
 	loop SQRT;
 	}
 }
 
-void l2_floating(int _size, float32_t* a)
+void l2_double(int _size, double64_t* a)
 {
-	/// <summary>
-	/// ST(1) = ST(1) * log2(ST(0))
-	/// </summary>
-	/// <param name="_size">size of a</param>
-	/// <param name="a">array of values</param>
 	__asm {
 		finit; init co - proc
 		mov eax, a;
@@ -120,12 +109,12 @@ void l2_floating(int _size, float32_t* a)
 		FSTP st(7)		;
 		FSTP st(1)		;
 		FSTP st(0)		;
-		add eax, 4		;
+		add eax, 8		;
 	loop LOG2;
 	}
 }
 
-void ln_floating(int _size, float32_t* a)
+void ln_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
@@ -139,12 +128,12 @@ void ln_floating(int _size, float32_t* a)
 		fyl2x		; st: ln(a[i])
 		FSTP st(1)	;
 		FSTP st(0)	;
-		add eax, 4	;
+		add eax, 8	;
 	loop Ln;
 	}
 }
 
-void sin_floating(int _size, float32_t* a) 
+void sin_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
@@ -156,12 +145,12 @@ void sin_floating(int _size, float32_t* a)
 		FSIN; sin
 		// drop from stack
 		FSTP st;
-		add eax, 4;
+		add eax, 8;
 	loop SIN;
 	}
 }
 
-void tan_floating(int _size, float32_t* a)
+void tan_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
@@ -173,12 +162,12 @@ void tan_floating(int _size, float32_t* a)
 		FPTAN; partual tangens
 		// drop from stack
 		FSTP st;
-		add eax, 4;
+		add eax, 8;
 	loop TAN;
 	}
 }
 
-void atan_floating(int _size, float32_t* a)
+void atan_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
@@ -190,7 +179,7 @@ void atan_floating(int _size, float32_t* a)
 		FPATAN; partual tangens
 		// drop from stack
 		FSTP st;
-		add eax, 4;
+		add eax, 8;
 	loop ATAN;
 	}
 }
