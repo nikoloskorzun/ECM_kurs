@@ -1,0 +1,74 @@
+#include "floating.h"
+
+
+void add_mem_double(int _size, double64_t* a, double64_t* b) {
+	__asm {
+		finit; init co - processor
+		mov eax, a;
+		mov ebx, b;
+		mov ecx, _size;
+	Addition:
+		// place floating into floating register
+		fld[ebx]; load b[i] into co - proc
+			fadd[eax]; sum in ST
+			FSTP	st(0);
+		add eax, 8;
+		add ebx, 8;
+		loop Addition;
+	}
+}
+
+void sub_mem_double(int _size, double64_t* a, double64_t* b)
+{
+	__asm {
+		finit; init co - processor
+		mov eax, a;
+		mov ebx, b;
+		mov ecx, _size;
+	Subtraction:
+		// place floating into floating register
+		fld[ebx]; load b[i] into co - proc
+			fsub[eax]; sum in ST
+			FSTP	st(0);
+		add eax, 8;
+		add ebx, 8;
+		loop Subtraction;
+	}
+}
+
+
+void mul_mem_double(int _size, double64_t* a, double64_t* b)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ebx, b;
+		mov ecx, _size;
+	Multiplication:
+		// place floating into floating register
+		fld[ebx]; load b[i] into co - proc
+			fmul[eax]; multiply
+			FSTP	st(0);
+		add eax, 8;
+		add ebx, 8;
+		loop Multiplication;
+	}
+}
+
+void div_mem_double(int _size, double64_t* a, double64_t* b)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ebx, b;
+		mov ecx, _size;
+	Division:
+		// place floating into floating register
+		fld[ebx]; load b[i] into co - proc
+		fdiv[eax]; division
+		FSTP	st(0);
+		add eax, 8;
+		add ebx, 8;
+	loop Division;
+	}
+}

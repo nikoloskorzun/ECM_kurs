@@ -28,6 +28,8 @@
     <ClCompile Include="integers_32_unsigned.c" />
     <ClCompile Include="integers_8_signed.c" />
     <ClCompile Include="integers_8_unsigned.c" />
+    <ClCompile Include="in_memory_double.c" />
+    <ClCompile Include="in_memory_floating.c" />
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
