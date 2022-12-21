@@ -70,11 +70,6 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
         call printf
         add esp, 8;
 
-
-
-
-
-
         inc loop_number
     }
     //printf("%i. %s", loop_number, text_hint);
@@ -1212,18 +1207,17 @@ void perform_unsigned_integers()
 
 void perform_floats() {
     float32_t *x_f, *y_f;
+    
     x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
     y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
-    double64_t* x_d, *y_d;
-    
-    
+
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
         x_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
         y_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
     }
 
-    printf("float point [Float 32 bit]\n");
+    printf("float point REGISTERS [Float 32 bit]\n");
     // binar
     timeit(add_floating, "ADD OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
@@ -1238,30 +1232,37 @@ void perform_floats() {
     timeit(tan_floating, "TAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     timeit(atan_floating, "ATAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
     
+    printf("float point MEMORY [Float 32 bit]\n");
+    timeit(add_mem_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sub_mem_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+
+
     // erase Float
     free(x_f);
     free(y_f);
 
-    x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
-    y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
 
 
     printf("Double [Double 64 bit]\n");
 
     // allocate new peace of data
+
+    double64_t* x_d, * y_d;
+    x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+    y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+
     for (int i = 0; i < NumberOfElementsArray; i++) {
         x_d[i] = rand();
         y_d[i] = rand();
     }
 
-    // double
-    timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-
     // binar
     timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_double, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_double, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_double, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
     // unar
     timeit(sqrt_double, "SQRT OF DOUBLE", 2, NumberOfElementsArray, x_d);
     timeit(l2_double, "LOG2 OF DOUBLE", 2, NumberOfElementsArray, x_d);
@@ -1270,6 +1271,12 @@ void perform_floats() {
     timeit(sin_double, "SIN OF DOUBLE", 2, NumberOfElementsArray, x_d);
     timeit(tan_double, "TAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
     timeit(atan_double, "ATAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+    //mem
+    printf("double MEMORY [Double 64 bit]\n");
+    timeit(add_mem_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_mem_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_mem_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_mem_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
 
     free(x_d);
     free(y_d);

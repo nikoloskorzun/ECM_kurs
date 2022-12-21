@@ -45,6 +45,12 @@
     <ClCompile Include="double.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="in_memory_floating.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="in_memory_double.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="floating.h">
