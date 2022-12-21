@@ -1,8 +1,5 @@
 #include "integers.h"
 
-
-
-
 void NOT32_reg_unsigned(int _size, int32_t* a)
 {
     __asm

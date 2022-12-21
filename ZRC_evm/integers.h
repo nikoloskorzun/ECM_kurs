@@ -23,12 +23,12 @@ void neg16_reg_signed(int _size, int16_t* a);
 void neg32_reg_signed(int _size, int32_t* a);
 
 void NOT8_reg_signed(int _size, int8_t* a);
-void NOT16_reg_signed(int _size, int8_t* a);
+void NOT16_reg_signed(int _size, int16_t* a);
 void NOT32_reg_signed(int _size, int32_t* a);
 
 
 
-void XOR8_reg_signed(int _size, int16_t* a, int16_t* b);
+void XOR8_reg_signed(int _size, int8_t* a, int8_t* b);
 void XOR16_reg_signed(int _size, int16_t* a, int16_t* b);
 void XOR32_reg_signed(int _size, int32_t* a, int32_t* b);
 

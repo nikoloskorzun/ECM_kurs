@@ -86,6 +86,7 @@ void div8_reg_signed(int _size, int8_t* a, int8_t* b)
             mov al, [esi];
             mov bl, [edi];
             cbw;
+                
             idiv bl;
             add esi, 1
             add edi, 1
