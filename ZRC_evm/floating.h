@@ -7,6 +7,8 @@
 
 // INFO: http://www.softcraft.ru/edu/comparch/practice/asm86/05-fpu/fpu.pdf
 #include "types.h"
+
+// REGISTERS
 // arithmetics
 void add_floating(int _size, float32_t* a, float32_t* b);
 void sub_floating(int _size, float32_t* a, float32_t* b);
@@ -34,5 +36,17 @@ void ln_double(int _size, double64_t* a);
 void sin_double(int _size, double64_t* a);
 void tan_double(int _size, double64_t* a);
 void atan_double(int _size, double64_t* a);
+
+
+// MEM
+void add_mem_floating(int _size, float32_t* a, float32_t* b);
+void sub_mem_floating(int _size, float32_t* a, float32_t* b);
+void mul_mem_floating(int _size, float32_t* a, float32_t* b);
+void div_mem_floating(int _size, float32_t* a, float32_t* b);
+
+void add_mem_double(int _size, double64_t* a, double64_t* b);
+void sub_mem_double(int _size, double64_t* a, double64_t* b);
+void mul_mem_double(int _size, double64_t* a, double64_t* b);
+void div_mem_double(int _size, double64_t* a, double64_t* b);
 
 #endif // !__FLOATING__
