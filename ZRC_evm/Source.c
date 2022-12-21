@@ -4,30 +4,25 @@
 #include "exec.h"
 
 
-int main()
-{
-    unsigned a = 64;
-    unsigned b = 64;
 
-    int i = 64;
-    int j = 64;
-    int* z = &i;
-    printf("%i, %i \n", i, j);
+int main_()
+{
+
+    char a[] = { 4, 5 ,6 };
+
     __asm
     {
-        
-        mov eax, j
-        add i, eax
-        
-        //mov j, eax
+        lea esi, a
+        NEG[esi]
+
     }
-    printf("%i, %i\n", i, j);
     return 0;
 }
 
 
-int main_()
+int main()
 {
+
     __asm
     {
         mov eax, 0;

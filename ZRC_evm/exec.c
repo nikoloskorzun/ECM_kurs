@@ -90,7 +90,7 @@ void perform_numbers()
     //zero time test
     timeit(empty_function, "EMPTY FUNCTION", 0);
 
-    perform_floats();
+    //perform_floats();
     perform_integers();
 
 }
@@ -101,7 +101,7 @@ void perform_integers()
     perform_unsigned_integers();
 }
 
-void perform_signed_int8()
+void perform_signed_int8_reg()
 {
     printf("SIGNED INT 8 bit\n");
 
@@ -155,7 +155,7 @@ void perform_signed_int8()
 }
 
 
-void perform_signed_int16()
+void perform_signed_int16_reg()
 {
     printf("SIGNED INT 16 bit\n");
 
@@ -209,7 +209,7 @@ void perform_signed_int16()
 }
 
 
-void perform_signed_int32()
+void perform_signed_int32_reg()
 {
     printf("SIGNED INT 32 bit\n");
 
@@ -263,7 +263,7 @@ void perform_signed_int32()
 
 
 
-void perform_unsigned_int8()
+void perform_unsigned_int8_reg()
 {
     printf("UNSIGNED INT 8 bit\n");
 
@@ -309,7 +309,7 @@ void perform_unsigned_int8()
 }
 
 
-void perform_unsigned_int16()
+void perform_unsigned_int16_reg()
 {
     printf("UNSIGNED INT 16 bit\n");
 
@@ -355,7 +355,7 @@ void perform_unsigned_int16()
 }
 
 
-void perform_unsigned_int32()
+void perform_unsigned_int32_reg()
 {
     printf("UNSIGNED INT 32 bit\n");
 
@@ -402,20 +402,650 @@ void perform_unsigned_int32()
 
 
 
+void perform_signed_int8_mem()
+{
+    printf("in memory SIGNED INT 8 bit\n");
+
+    int8_t* x_8, * y_8, * x_for_div_8, * y_for_div_8;
+    x_8 = (int8_t*)malloc(NumberOfElementsArray * sizeof(int8_t));
+    y_8 = (int8_t*)malloc(NumberOfElementsArray * sizeof(int8_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+
+    //unar
+    timeit(NOT8_mem_signed, "NOT OF INTEGERS[8 bit]", 2, NumberOfElementsArray, x_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(neg8_mem_signed, "NEG OF INTEGERS[8 bit]", 2, NumberOfElementsArray, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(XOR8_mem_signed_left, "XOR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(AND8_mem_signed_left, "AND OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(OR8_mem_signed_left, "OR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(add8_mem_signed_left, "SUM OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(sub8_mem_signed_left, "SUB OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (int8_t)(rand());
+        y_8[i] = (int8_t)(rand());
+
+    }
+    timeit(XOR8_mem_signed_right, "XOR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(AND8_mem_signed_right, "AND OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(OR8_mem_signed_right, "OR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(add8_mem_signed_right, "ADD OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(sub8_mem_signed_right, "SUB OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+
+    free(x_8);
+    free(y_8);
+
+    x_for_div_8 = (int8_t*)malloc(NumberOfElementsArray * sizeof(int8_t));
+    y_for_div_8 = (int8_t*)malloc(NumberOfElementsArray * sizeof(int8_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_8[i] = (int8_t)(rand());
+        } while (!x_for_div_8[i]);
+
+        do
+        {
+            y_for_div_8[i] = (int8_t)(rand());
+        } while (y_for_div_8[i] == (-128));
+    }
+
+    timeit(div8_mem_signed, "DIV OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
+
+    free(x_for_div_8);
+    free(y_for_div_8);
+
+}
+
+
+void perform_signed_int16_mem()
+{
+    printf("in memory SIGNED INT 16 bit\n");
+
+    int16_t* x_16, * y_16, * x_for_div_16, * y_for_div_16;
+    x_16 = (int16_t*)malloc(NumberOfElementsArray * sizeof(int16_t));
+    y_16 = (int16_t*)malloc(NumberOfElementsArray * sizeof(int16_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+
+    //unar
+    timeit(NOT16_mem_signed, "NOT OF INTEGERS[16 bit]", 2, NumberOfElementsArray, x_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(neg16_mem_signed, "NEG OF INTEGERS[16 bit]", 2, NumberOfElementsArray, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(XOR16_mem_signed_left, "XOR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(AND16_mem_signed_left, "AND OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(OR16_mem_signed_left, "OR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(add16_mem_signed_left, "SUM OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(sub16_mem_signed_left, "SUB OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (int16_t)(((rand()) << 15) | rand());
+        y_16[i] = (int16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(XOR16_mem_signed_right, "XOR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(AND16_mem_signed_right, "AND OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(OR16_mem_signed_right, "OR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(add16_mem_signed_right, "ADD OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(sub16_mem_signed_right, "SUB OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+
+    free(x_16);
+    free(y_16);
+
+    x_for_div_16 = (int16_t*)malloc(NumberOfElementsArray * sizeof(int16_t));
+    y_for_div_16 = (int16_t*)malloc(NumberOfElementsArray * sizeof(int16_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_16[i] = (int16_t)(((rand()) << 15) | rand());
+        } while (!x_for_div_16[i]);
+
+        do
+        {
+            y_for_div_16[i] = (int16_t)(((rand()) << 15) | rand());
+        } while (y_for_div_16[i] == (-32768));
+    }
+
+    timeit(div16_mem_signed, "DIV OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
+
+    free(x_for_div_16);
+    free(y_for_div_16);
+
+}
+
+void perform_signed_int32_mem()
+{
+    printf("in memory SIGNED INT 32 bit\n");
+
+    int32_t* x_32, * y_32, * x_for_div_32, * y_for_div_32;
+    x_32 = (int32_t*)malloc(NumberOfElementsArray * sizeof(int32_t));
+    y_32 = (int32_t*)malloc(NumberOfElementsArray * sizeof(int32_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+
+    //unar
+    timeit(NOT32_mem_signed, "NOT OF INTEGERS[32 bit]", 2, NumberOfElementsArray, x_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(neg32_mem_signed, "NEG OF INTEGERS[32 bit]", 2, NumberOfElementsArray, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(XOR32_mem_signed_left, "XOR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(AND32_mem_signed_left, "AND OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(OR32_mem_signed_left, "OR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(add32_mem_signed_left, "SUM OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(sub32_mem_signed_left, "SUB OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(XOR32_mem_signed_right, "XOR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(AND32_mem_signed_right, "AND OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(OR32_mem_signed_right, "OR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(add32_mem_signed_right, "ADD OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(sub32_mem_signed_right, "SUB OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+
+    free(x_32);
+    free(y_32);
+
+    x_for_div_32 = (int32_t*)malloc(NumberOfElementsArray * sizeof(int32_t));
+    y_for_div_32 = (int32_t*)malloc(NumberOfElementsArray * sizeof(int32_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        } while (!x_for_div_32[i]);
+
+        do
+        {
+            y_for_div_32[i] = (int32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        } while (y_for_div_32[i] == ((int)(1))<<31);
+    }
+
+    timeit(div32_mem_signed, "DIV OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
+
+    free(x_for_div_32);
+    free(y_for_div_32);
+
+}
+
+
+
+
+void perform_unsigned_int8_mem()
+{
+    printf("in memory unsigned int 8 bit\n");
+
+    uint8_t* x_8, * y_8, * x_for_div_8, * y_for_div_8;
+    x_8 = (uint8_t*)malloc(NumberOfElementsArray * sizeof(uint8_t));
+    y_8 = (uint8_t*)malloc(NumberOfElementsArray * sizeof(uint8_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+
+    //unar
+    timeit(NOT8_mem_unsigned, "NOT OF INTEGERS[8 bit]", 2, NumberOfElementsArray, x_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(XOR8_mem_unsigned_left, "XOR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(AND8_mem_unsigned_left, "AND OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(OR8_mem_unsigned_left, "OR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(add8_mem_unsigned_left, "SUM OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(sub8_mem_unsigned_left, "SUB OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_8[i] = (uint8_t)(rand());
+        y_8[i] = (uint8_t)(rand());
+
+    }
+    timeit(XOR8_mem_unsigned_right, "XOR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(AND8_mem_unsigned_right, "AND OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(OR8_mem_unsigned_right, "OR OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(add8_mem_unsigned_right, "ADD OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(sub8_mem_unsigned_right, "SUB OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_8, y_8);
+
+    free(x_8);
+    free(y_8);
+
+    x_for_div_8 = (uint8_t*)malloc(NumberOfElementsArray * sizeof(uint8_t));
+    y_for_div_8 = (uint8_t*)malloc(NumberOfElementsArray * sizeof(uint8_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_8[i] = (uint8_t)(rand());
+        } while (!x_for_div_8[i]);
+
+        y_for_div_8[i] = (uint8_t)(rand());
+    }
+
+    timeit(div8_mem_unsigned, "DIV OF INTEGERS[8 bit]", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
+
+    free(x_for_div_8);
+    free(y_for_div_8);
+
+}
+
+
+void perform_unsigned_int16_mem()
+{
+    printf("in memory unsigned int 16 bit\n");
+
+    uint16_t* x_16, * y_16, * x_for_div_16, * y_for_div_16;
+    x_16 = (uint16_t*)malloc(NumberOfElementsArray * sizeof(uint16_t));
+    y_16 = (uint16_t*)malloc(NumberOfElementsArray * sizeof(uint16_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+
+    //unar
+    timeit(NOT16_mem_unsigned, "NOT OF INTEGERS[16 bit]", 2, NumberOfElementsArray, x_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(XOR16_mem_unsigned_left, "XOR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(AND16_mem_unsigned_left, "AND OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(OR16_mem_unsigned_left, "OR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(add16_mem_unsigned_left, "SUM OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(sub16_mem_unsigned_left, "SUB OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        y_16[i] = (uint16_t)(((rand()) << 15) | rand());
+
+    }
+    timeit(XOR16_mem_unsigned_right, "XOR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(AND16_mem_unsigned_right, "AND OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(OR16_mem_unsigned_right, "OR OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(add16_mem_unsigned_right, "ADD OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(sub16_mem_unsigned_right, "SUB OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_16, y_16);
+
+    free(x_16);
+    free(y_16);
+
+    x_for_div_16 = (uint16_t*)malloc(NumberOfElementsArray * sizeof(uint16_t));
+    y_for_div_16 = (uint16_t*)malloc(NumberOfElementsArray * sizeof(uint16_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_16[i] = (uint16_t)(((rand()) << 15) | rand());
+        } while (!x_for_div_16[i]);
+
+        y_for_div_16[i] = (uint16_t)(((rand()) << 15) | rand());
+       
+    }
+
+    timeit(div16_mem_unsigned, "DIV OF INTEGERS[16 bit]", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
+
+    free(x_for_div_16);
+    free(y_for_div_16);
+
+}
+
+void perform_unsigned_int32_mem()
+{
+    printf("in memory unsigned uint 32 bit\n");
+
+    uint32_t* x_32, * y_32, * x_for_div_32, * y_for_div_32;
+    x_32 = (uint32_t*)malloc(NumberOfElementsArray * sizeof(uint32_t));
+    y_32 = (uint32_t*)malloc(NumberOfElementsArray * sizeof(uint32_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+
+    //unar
+    timeit(NOT32_mem_unsigned, "NOT OF INTEGERS[32 bit]", 2, NumberOfElementsArray, x_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    
+    printf("mem - left; reg - right\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(XOR32_mem_unsigned_left, "XOR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(AND32_mem_unsigned_left, "AND OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(OR32_mem_unsigned_left, "OR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(add32_mem_unsigned_left, "SUM OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(sub32_mem_unsigned_left, "SUB OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+
+    printf("mem - right; reg - left\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        y_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+
+    }
+    timeit(XOR32_mem_unsigned_right, "XOR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(AND32_mem_unsigned_right, "AND OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(OR32_mem_unsigned_right, "OR OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(add32_mem_unsigned_right, "ADD OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(sub32_mem_unsigned_right, "SUB OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_32, y_32);
+
+    free(x_32);
+    free(y_32);
+
+    x_for_div_32 = (uint32_t*)malloc(NumberOfElementsArray * sizeof(uint32_t));
+    y_for_div_32 = (uint32_t*)malloc(NumberOfElementsArray * sizeof(uint32_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        do
+        {
+            x_for_div_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        } while (!x_for_div_32[i]);
+
+        y_for_div_32[i] = (uint32_t)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        
+    }
+
+    timeit(div32_mem_unsigned, "DIV OF INTEGERS[32 bit]", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
+
+    free(x_for_div_32);
+    free(y_for_div_32);
+
+}
+
+
+
+
+
+
 void perform_signed_integers()
 {
-    perform_signed_int8();
-    perform_signed_int16();
-    perform_signed_int32();
+    perform_signed_int8_reg();
+    perform_signed_int16_reg();
+    perform_signed_int32_reg();
+
+    perform_signed_int8_mem();
+    perform_signed_int16_mem();
+    perform_signed_int32_mem();
+
+
 }
 
 
 
 void perform_unsigned_integers()
 {
-    perform_unsigned_int8();
-    perform_unsigned_int16();
-    perform_unsigned_int32();
+    perform_unsigned_int8_reg();
+    perform_unsigned_int16_reg();
+    perform_unsigned_int32_reg();
+
+    perform_unsigned_int8_mem();
+    perform_unsigned_int16_mem();
+    perform_unsigned_int32_mem();
 }
 
 

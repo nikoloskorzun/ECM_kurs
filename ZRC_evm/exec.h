@@ -1,7 +1,8 @@
 #ifndef __EXECUTOR__
 
 #ifndef NumberOfElementsArray
-	#define NumberOfElementsArray 100000000i32
+	//#define NumberOfElementsArray 100000000i32
+	#define NumberOfElementsArray 1000000i32
 #endif
 #include "stdio.h"
 #include "stdlib.h"
@@ -23,16 +24,21 @@ void perform_integers();
 
 void perform_signed_integers();
 
-void perform_signed_int8();
-void perform_signed_int16();
-void perform_signed_int32();
+void perform_signed_int8_reg();
+void perform_signed_int16_reg();
+void perform_signed_int32_reg();
+void perform_signed_int8_mem();
+void perform_signed_int16_mem();
+void perform_signed_int32_mem();
 
 void perform_unsigned_integers();
 
-void perform_unsigned_int8();
-void perform_unsigned_int16();
-void perform_unsigned_int32();
-
+void perform_unsigned_int8_reg();
+void perform_unsigned_int16_reg();
+void perform_unsigned_int32_reg();
+void perform_unsigned_int8_mem();
+void perform_unsigned_int16_mem();
+void perform_unsigned_int32_mem();
 
 
 void perform_floats();
