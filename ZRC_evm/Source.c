@@ -3,23 +3,6 @@
 
 #include "exec.h"
 
-
-
-int main_()
-{
-
-    char a[] = { 4, 5 ,6 };
-
-    __asm
-    {
-        lea esi, a
-        NEG[esi]
-
-    }
-    return 0;
-}
-
-
 int main()
 {
 
@@ -35,7 +18,7 @@ int main()
         call srand;
         add esp, 4;
 
-        call perform_numbers;
+        call performance_comparison;
     }
 
     return 0;
