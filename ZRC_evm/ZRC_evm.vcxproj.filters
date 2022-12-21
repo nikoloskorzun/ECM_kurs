@@ -21,10 +21,28 @@
     <ClCompile Include="floating.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="integers.c">
+    <ClCompile Include="exec.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="exec.c">
+    <ClCompile Include="integers_8_signed.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_8_unsigned.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_16_signed.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_16_unsigned.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_32_signed.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_32_unsigned.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="double.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

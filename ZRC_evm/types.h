@@ -6,4 +6,5 @@
 typedef void(*FunctionPtr)();
 
 typedef float float32_t;
+typedef double double64_t;
 #endif // !__TYPES__

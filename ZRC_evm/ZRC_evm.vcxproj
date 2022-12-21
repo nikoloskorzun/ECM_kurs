@@ -19,9 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="double.c" />
     <ClCompile Include="exec.c" />
     <ClCompile Include="floating.c" />
-    <ClCompile Include="integers.c" />
+    <ClCompile Include="integers_16_signed.c" />
+    <ClCompile Include="integers_16_unsigned.c" />
+    <ClCompile Include="integers_32_signed.c" />
+    <ClCompile Include="integers_32_unsigned.c" />
+    <ClCompile Include="integers_8_signed.c" />
+    <ClCompile Include="integers_8_unsigned.c" />
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
