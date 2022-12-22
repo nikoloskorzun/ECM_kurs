@@ -278,6 +278,8 @@ D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1237,23): warning C4047: фу�
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1237,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1238,23): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1238,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1239,25): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1239,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1242,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1242,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1243,24): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,float32_t *)"
@@ -306,18 +308,20 @@ D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1293,21): warning C4047: фу�
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1293,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1294,21): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1294,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
-D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1298,22): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
-D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1298,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1295,23): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1295,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1299,22): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1299,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
-D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1300,23): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1300,22): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1300,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
-D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1317,26): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *,double64_t *)"
-D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1317,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1301,23): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *)"
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1301,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1318,26): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1318,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1319,26): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1319,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1320,26): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *,double64_t *)"
 D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1320,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1321,26): warning C4047: функция: "FunctionPtr *" отличается по уровням косвенного обращения от "void (__cdecl *)(int,double64_t *,double64_t *)"
+D:\C&C++ projects\ZRC_evm\ECM_kurs\ZRC_evm\exec.c(1321,12): warning C4024: timeit: различные типы для формального и фактического параметров 1
   ZRC_evm.vcxproj -> D:\C&C++ projects\ZRC_evm\ECM_kurs\Debug\ZRC_evm.exe

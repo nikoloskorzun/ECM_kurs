@@ -4,8 +4,8 @@
 void add_floating(int _size, float32_t* a, float32_t* b) {
 	__asm {
 		finit				; init co-processor
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 		Addition:
 			// place floating into floating register
@@ -25,8 +25,8 @@ void sub_floating(int _size, float32_t* a, float32_t* b)
 {
 	__asm {
 		finit				; init co - processor
-		mov eax, a			;
-		mov ebx, b			;
+		lea eax, a			;
+		lea ebx, b			;
 		mov ecx, _size		;
 		Subtraction:
 		// place floating into floating register
@@ -44,8 +44,8 @@ void mul_floating(int _size, float32_t* a, float32_t* b)
 {
 	__asm {
 		finit			; init co-proc
-		mov eax, a		;
-		mov ebx, b		;
+		lea eax, a		;
+		lea ebx, b		;
 		mov ecx, _size	;
 		Multiplication:
 			// place floating into floating register
@@ -62,8 +62,8 @@ void mul_floating(int _size, float32_t* a, float32_t* b)
 void div_floating(int _size, float32_t* a, float32_t* b) {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 	Division:
 		// place floating into floating register
@@ -87,7 +87,7 @@ void sqrt_floating(int _size, float32_t* a)
 	/// <param name="a"></param>
 	__asm {
 		finit			; init co - proc
-		mov eax, a		;
+		lea eax, a		;
 		mov ecx, _size	;
 
 	SQRT:
@@ -109,7 +109,7 @@ void l2_floating(int _size, float32_t* a)
 	/// <param name="a">array of values</param>
 	__asm {
 		finit; init co - proc
-		mov eax, a;
+		lea eax, a;
 		mov ecx, _size;
 
 	LOG2:
@@ -129,7 +129,7 @@ void ln_floating(int _size, float32_t* a)
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
+		lea eax, a;
 		mov ecx, _size;
 	Ln:
 		// place floating into floating register
@@ -144,11 +144,30 @@ void ln_floating(int _size, float32_t* a)
 	}
 }
 
+void pow2_floating(int _size, double64_t* a)
+{
+	__asm {
+		finit; init co - proc
+		lea eax, a;
+		mov ecx, _size;
+	POW2:
+		// place floating into floating register
+		FLD1; // place 1 to st(1)
+		fld[eax]; // a[i] in st(0)
+		F2XM1;	//2^X-1: st(0)<-2^st(0)-1
+		fadd;
+		FSTP st(1);
+		FSTP st(0);
+		add eax, 8;
+		loop POW2;
+	}
+}
+
 void sin_floating(int _size, float32_t* a) 
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
+		lea eax, a;
 		mov ecx, _size;
 	SIN:
 		// sin of a[i] 
@@ -165,7 +184,7 @@ void tan_floating(int _size, float32_t* a)
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
+		lea eax, a;
 		mov ecx, _size;
 	TAN:
 		// tan of a[i] 
@@ -182,14 +201,15 @@ void atan_floating(int _size, float32_t* a)
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
+		lea eax, a;
 		mov ecx, _size;
 	ATAN:
 		// tan of a[i] 
-		fld[eax]
-		FPATAN; partual tangens
+		fld1;
+		fld		[eax];
+		FPATAN; partual arctangens
 		// drop from stack
-		FSTP st;
+		FSTP st(0);
 		add eax, 4;
 	loop ATAN;
 	}
