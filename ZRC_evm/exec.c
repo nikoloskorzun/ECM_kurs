@@ -1206,6 +1206,10 @@ void perform_unsigned_integers()
 
 
 void perform_floats() {
+
+    printf(DelimString);
+    printf("\tFLOAT POINT 32 bit\n");
+
     float32_t *x_f, *y_f;
     
     x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
@@ -1213,30 +1217,30 @@ void perform_floats() {
 
     for (int i = 0; i < NumberOfElementsArray; i++) 
     {
-        x_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
-        y_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        x_f[i] = (float32_t)(get_random_uint32_t());
+        y_f[i] = (float32_t)(get_random_uint32_t());
     }
 
-    printf("float point REGISTERS [Float 32 bit]\n");
+    //printf("float point REGISTERS [Float 32 bit]\n");
     // binar
-    timeit(add_floating, "ADD OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(add_floating, "FADD REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sub_floating, "FSUB REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_floating, "FMUL REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(div_floating, "FDIV REG, REG", 3, NumberOfElementsArray, x_f, y_f);
     // unar
-    timeit(sqrt_floating, "SQRT OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(l2_floating, "LOG2 OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(ln_floating, "LN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    timeit(sqrt_floating, "FSQRT REG, REG", 2, NumberOfElementsArray, x_f);
+    timeit(l2_floating, "FYL2X REG, REG", 2, NumberOfElementsArray, x_f);
+    timeit(ln_floating, "LN REG, REG", 2, NumberOfElementsArray, x_f);
     // trigan
-    timeit(sin_floating, "SIN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(tan_floating, "TAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(atan_floating, "ATAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    timeit(sin_floating, "FSIN REG, REG", 2, NumberOfElementsArray, x_f);
+    timeit(tan_floating, "FPTAN REG, REG", 2, NumberOfElementsArray, x_f);
+    timeit(atan_floating, "FPATAN REG, REG", 2, NumberOfElementsArray, x_f);
     
     printf("float point MEMORY [Float 32 bit]\n");
-    timeit(add_mem_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(sub_mem_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_mem_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_mem_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(add_mem_floating, "FSUM REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sub_mem_floating, "FSUB REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "FMUL REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "FDIV REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
 
 
     // erase Float

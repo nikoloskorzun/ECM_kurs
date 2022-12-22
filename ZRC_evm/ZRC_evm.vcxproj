@@ -23,11 +23,17 @@
     <ClCompile Include="exec.c" />
     <ClCompile Include="floating.c" />
     <ClCompile Include="integers_16_signed.c" />
+    <ClCompile Include="integers_16_signed_MEM.c" />
     <ClCompile Include="integers_16_unsigned.c" />
+    <ClCompile Include="integers_16_unsigned_MEM.c" />
     <ClCompile Include="integers_32_signed.c" />
+    <ClCompile Include="integers_32_signed_MEM.c" />
     <ClCompile Include="integers_32_unsigned.c" />
+    <ClCompile Include="integers_32_unsigned_MEM.c" />
     <ClCompile Include="integers_8_signed.c" />
+    <ClCompile Include="integers_8_signed_MEM.c" />
     <ClCompile Include="integers_8_unsigned.c" />
+    <ClCompile Include="integers_8_unsigned_MEM.c" />
     <ClCompile Include="in_memory_double.c" />
     <ClCompile Include="in_memory_floating.c" />
     <ClCompile Include="Source.c" />
@@ -49,26 +55,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
