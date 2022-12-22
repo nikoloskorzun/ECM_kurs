@@ -1,7 +1,7 @@
 #ifndef __EXECUTOR__
 
 #ifndef NumberOfElementsArray
-	#define NumberOfElementsArray 80000i32
+	#define NumberOfElementsArray 100i32
 #endif
 
 #ifndef DelimString
@@ -10,12 +10,16 @@
 
 
 #ifndef UnarOperationString
-	#define UnarOperationString "\nUnary operation:\n\n"
+	#define UnarOperationString "\nUnary operations:\n\n"
 #endif
 
 #ifndef BinaryOperationString
-	#define BinaryOperationString "\nBinary operation:\n\n"
+	#define BinaryOperationString "\nBinary operations:\n\n"
 #endif
+#ifndef TriganometricOperationString
+	#define TriganometricOperationString "\nTriganometric operations:\n\n"
+#endif 
+
 
 
 

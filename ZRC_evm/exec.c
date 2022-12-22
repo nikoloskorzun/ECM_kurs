@@ -362,7 +362,7 @@ void perform_signed_int32_reg()
 
     timeit(add32_reg_signed, "ADD REG, REG", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_reg_signed, "SUB REG, REG", 3, NumberOfElementsArray, x_32, y_32);
-    timeit(mul32_reg_signed, "MUL REG, REG", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_reg_signed, "IMUL REG, REG", 3, NumberOfElementsArray, x_32, y_32);
     
     free(x_32);
     free(y_32);
@@ -383,7 +383,7 @@ void perform_signed_int32_reg()
         } while (y_for_div_32[i] == (((int)1)<<31));//eliminate integer overflow -2^15
     }
 
-    timeit(div32_reg_signed, "DIV REG, REG", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32); //y/x
+    timeit(div32_reg_signed, "IDIV REG, REG", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32); //y/x
 
     free(x_for_div_32);
     free(y_for_div_32);
@@ -623,6 +623,7 @@ void perform_signed_int8_mem()
     timeit(OR8_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(add8_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(sub8_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(mul8_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
 
     free(x_8);
     free(y_8);
@@ -643,7 +644,7 @@ void perform_signed_int8_mem()
         } while (y_for_div_8[i] == (-128));//eliminate integer overflow -2^7
     }
 
-    timeit(div8_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
+    timeit(div8_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
 
     free(x_for_div_8);
     free(y_for_div_8);
@@ -733,6 +734,7 @@ void perform_signed_int16_mem()
     timeit(OR16_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(add16_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(sub16_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(mul16_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
 
     free(x_16);
     free(y_16);
@@ -753,7 +755,7 @@ void perform_signed_int16_mem()
         } while (y_for_div_16[i] == (-32768));//eliminate integer overflow -2^15
     }
 
-    timeit(div16_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
+    timeit(div16_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
 
     free(x_for_div_16);
     free(y_for_div_16);
@@ -843,6 +845,7 @@ void perform_signed_int32_mem()
     timeit(OR32_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(add32_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
 
     free(x_32);
     free(y_32);
@@ -863,7 +866,7 @@ void perform_signed_int32_mem()
         } while (y_for_div_32[i] == ((int)(1))<<31);//
     }
 
-    timeit(div32_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
+    timeit(div32_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
 
     free(x_for_div_32);
     free(y_for_div_32);
@@ -947,6 +950,7 @@ void perform_unsigned_int8_mem()
     timeit(OR8_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(add8_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(sub8_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(mul8_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
 
     free(x_8);
     free(y_8);
@@ -1048,6 +1052,7 @@ void perform_unsigned_int16_mem()
     timeit(OR16_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(add16_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(sub16_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(mul16_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
 
     free(x_16);
     free(y_16);
@@ -1148,6 +1153,7 @@ void perform_unsigned_int32_mem()
     timeit(OR32_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(add32_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
 
     free(x_32);
     free(y_32);
@@ -1205,50 +1211,64 @@ void perform_unsigned_integers()
 }
 
 
-void perform_floats() {
-    float32_t *x_f, *y_f;
-    
+void perform_float_reg()
+{
+    float32_t* x_f, * y_f;
+
     x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
     y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
 
-    for (int i = 0; i < NumberOfElementsArray; i++) 
+    for (int i = 0; i < NumberOfElementsArray; i++)
     {
-        x_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
-        y_f[i] = (float)((rand() << 17) | ((rand() % 4) << 15) | rand());
+        x_f[i] = (float32_t)(get_random_uint32_t());
+        y_f[i] = (float32_t)(get_random_uint32_t());
     }
 
-    printf("float point REGISTERS [Float 32 bit]\n");
     // binar
-    timeit(add_floating, "ADD OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(sub_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(div_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
+    printf(BinaryOperationString);
+    timeit(add_floating, "FADD REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sub_floating, "FSUB REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_floating, "FMUL REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(div_floating, "FDIV REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+
     // unar
-    timeit(sqrt_floating, "SQRT OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(l2_floating, "LOG2 OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(ln_floating, "LN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
+    printf(UnarOperationString);
+    timeit(sqrt_floating, "FSQRT REG", 2, NumberOfElementsArray, x_f);
+    timeit(l2_floating, "FYL2X REG", 2, NumberOfElementsArray, x_f);
+    timeit(ln_floating, "LN REG", 2, NumberOfElementsArray, x_f);
+
     // trigan
-    timeit(sin_floating, "SIN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(tan_floating, "TAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    timeit(atan_floating, "ATAN OF FLOATING POINT", 2, NumberOfElementsArray, x_f);
-    
-    printf("float point MEMORY [Float 32 bit]\n");
-    timeit(add_mem_floating, "SUM OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(sub_mem_floating, "SUB OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_mem_floating, "MUL OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-    timeit(mul_mem_floating, "DIV OF FLOATING POINT", 3, NumberOfElementsArray, x_f, y_f);
-
-
-    // erase Float
+    printf(TriganometricOperationString);
+    timeit(sin_floating, "FSIN REG", 2, NumberOfElementsArray, x_f);
+    timeit(tan_floating, "FPTAN REG", 2, NumberOfElementsArray, x_f);
+    timeit(atan_floating, "FPATAN REG", 2, NumberOfElementsArray, x_f);
     free(x_f);
     free(y_f);
+}
 
+void perform_float_mem() 
+{
+    float32_t* x_f, * y_f;
 
+    x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
+    y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
 
-    printf("Double [Double 64 bit]\n");
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_f[i] = (float32_t)(get_random_uint32_t());
+        y_f[i] = (float32_t)(get_random_uint32_t());
+    }
+    printf(BinaryOperationString);
+    timeit(add_mem_floating, "FSUM REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sub_mem_floating, "FSUB REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "FMUL REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(mul_mem_floating, "FDIV REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
+    free(x_f);
+    free(y_f);
+}
 
-    // allocate new peace of data
-
+void perform_double_reg()
+{
     double64_t* x_d, * y_d;
     x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
     y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
@@ -1259,27 +1279,60 @@ void perform_floats() {
     }
 
     // binar
-    timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+
+    printf(BinaryOperationString);
+    timeit(add_double, "ADD REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_double, "SUB REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_double, "MUL REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_double, "DIV REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+
     // unar
-    timeit(sqrt_double, "SQRT OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(l2_double, "LOG2 OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(ln_double, "LN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+
+    printf(UnarOperationString);
+    timeit(sqrt_double, "FSQRT REG, REG", 2, NumberOfElementsArray, x_d);
+    timeit(l2_double, "FYL2X REG", 2, NumberOfElementsArray, x_d);
+    timeit(ln_double, "LN REG, REG", 2, NumberOfElementsArray, x_d);
     // trigan
-    timeit(sin_double, "SIN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(tan_double, "TAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(atan_double, "ATAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    //mem
-    printf("double MEMORY [Double 64 bit]\n");
-    timeit(add_mem_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_mem_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_mem_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_mem_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+
+    printf(TriganometricOperationString);
+    timeit(sin_double, "FSIN REG", 2, NumberOfElementsArray, x_d);
+    timeit(tan_double, "FPTAN REG", 2, NumberOfElementsArray, x_d);
+    timeit(atan_double, "FPATAN REG", 2, NumberOfElementsArray, x_d);
 
     free(x_d);
     free(y_d);
+}
+
+
+void perform_double_mem()
+{
+    double64_t* x_d, * y_d;
+    x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+    y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++) {
+        x_d[i] = rand();
+        y_d[i] = rand();
+    }
+    timeit(add_mem_double, "ADD REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_mem_double, "SUB REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_mem_double, "MUL REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_mem_double, "DIV REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+
+    free(x_d);
+    free(y_d);
+}
+
+
+void perform_floats() {
+    printf(DelimString);
+    printf("\tFLOAT POINT 32 bit\n");
+    perform_float_reg();
+    perform_float_mem();
+    printf(DelimString);
+    printf("\tDOUBLE 64 bit\n");
+    perform_double_reg();
+    perform_double_mem();
 }
 
 
