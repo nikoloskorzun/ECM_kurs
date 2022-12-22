@@ -1211,54 +1211,64 @@ void perform_unsigned_integers()
 }
 
 
-void perform_floats() {
+void perform_float_reg()
+{
+    float32_t* x_f, * y_f;
 
-    printf(DelimString);
-    printf("\tFLOAT POINT 32 bit\n");
-
-    float32_t *x_f, *y_f;
-    
     x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
     y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
 
-    for (int i = 0; i < NumberOfElementsArray; i++) 
+    for (int i = 0; i < NumberOfElementsArray; i++)
     {
         x_f[i] = (float32_t)(get_random_uint32_t());
         y_f[i] = (float32_t)(get_random_uint32_t());
     }
 
-    //printf("float point REGISTERS [Float 32 bit]\n");
     // binar
+    printf(BinaryOperationString);
     timeit(add_floating, "FADD REG, REG", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_floating, "FSUB REG, REG", 3, NumberOfElementsArray, x_f, y_f);
     timeit(mul_floating, "FMUL REG, REG", 3, NumberOfElementsArray, x_f, y_f);
     timeit(div_floating, "FDIV REG, REG", 3, NumberOfElementsArray, x_f, y_f);
+
     // unar
-    timeit(sqrt_floating, "FSQRT REG, REG", 2, NumberOfElementsArray, x_f);
-    timeit(l2_floating, "FYL2X REG, REG", 2, NumberOfElementsArray, x_f);
-    timeit(ln_floating, "LN REG, REG", 2, NumberOfElementsArray, x_f);
+    printf(UnarOperationString);
+    timeit(sqrt_floating, "FSQRT REG", 2, NumberOfElementsArray, x_f);
+    timeit(l2_floating, "FYL2X REG", 2, NumberOfElementsArray, x_f);
+    timeit(ln_floating, "LN REG", 2, NumberOfElementsArray, x_f);
+
     // trigan
-    timeit(sin_floating, "FSIN REG, REG", 2, NumberOfElementsArray, x_f);
-    timeit(tan_floating, "FPTAN REG, REG", 2, NumberOfElementsArray, x_f);
-    timeit(atan_floating, "FPATAN REG, REG", 2, NumberOfElementsArray, x_f);
-    
-    printf("float point MEMORY [Float 32 bit]\n");
+    printf(TriganometricOperationString);
+    timeit(sin_floating, "FSIN REG", 2, NumberOfElementsArray, x_f);
+    timeit(tan_floating, "FPTAN REG", 2, NumberOfElementsArray, x_f);
+    timeit(atan_floating, "FPATAN REG", 2, NumberOfElementsArray, x_f);
+    free(x_f);
+    free(y_f);
+}
+
+void perform_float_mem() 
+{
+    float32_t* x_f, * y_f;
+
+    x_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
+    y_f = (float32_t*)malloc(NumberOfElementsArray * sizeof(float32_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++)
+    {
+        x_f[i] = (float32_t)(get_random_uint32_t());
+        y_f[i] = (float32_t)(get_random_uint32_t());
+    }
+    printf(BinaryOperationString);
     timeit(add_mem_floating, "FSUM REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
     timeit(sub_mem_floating, "FSUB REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
     timeit(mul_mem_floating, "FMUL REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
     timeit(mul_mem_floating, "FDIV REG, MEM", 3, NumberOfElementsArray, x_f, y_f);
-
-
-    // erase Float
     free(x_f);
     free(y_f);
+}
 
-
-
-    printf("Double [Double 64 bit]\n");
-
-    // allocate new peace of data
-
+void perform_double_reg()
+{
     double64_t* x_d, * y_d;
     x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
     y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
@@ -1269,27 +1279,60 @@ void perform_floats() {
     }
 
     // binar
-    timeit(add_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+
+    printf(BinaryOperationString);
+    timeit(add_double, "ADD REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_double, "SUB REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_double, "MUL REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_double, "DIV REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+
     // unar
-    timeit(sqrt_double, "SQRT OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(l2_double, "LOG2 OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(ln_double, "LN OF DOUBLE", 2, NumberOfElementsArray, x_d);
+
+    printf(UnarOperationString);
+    timeit(sqrt_double, "FSQRT REG, REG", 2, NumberOfElementsArray, x_d);
+    timeit(l2_double, "FYL2X REG", 2, NumberOfElementsArray, x_d);
+    timeit(ln_double, "LN REG, REG", 2, NumberOfElementsArray, x_d);
     // trigan
-    timeit(sin_double, "SIN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(tan_double, "TAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    timeit(atan_double, "ATAN OF DOUBLE", 2, NumberOfElementsArray, x_d);
-    //mem
-    printf("double MEMORY [Double 64 bit]\n");
-    timeit(add_mem_double, "ADD OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_mem_double, "SUB OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_mem_double, "MUL OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_mem_double, "DIV OF DOUBLE", 3, NumberOfElementsArray, x_d, y_d);
+
+    printf(TriganometricOperationString);
+    timeit(sin_double, "FSIN REG", 2, NumberOfElementsArray, x_d);
+    timeit(tan_double, "FPTAN REG", 2, NumberOfElementsArray, x_d);
+    timeit(atan_double, "FPATAN REG", 2, NumberOfElementsArray, x_d);
 
     free(x_d);
     free(y_d);
+}
+
+
+void perform_double_mem()
+{
+    double64_t* x_d, * y_d;
+    x_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+    y_d = (double64_t*)malloc(NumberOfElementsArray * sizeof(double64_t));
+
+    for (int i = 0; i < NumberOfElementsArray; i++) {
+        x_d[i] = rand();
+        y_d[i] = rand();
+    }
+    timeit(add_mem_double, "ADD REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_mem_double, "SUB REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_mem_double, "MUL REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_mem_double, "DIV REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+
+    free(x_d);
+    free(y_d);
+}
+
+
+void perform_floats() {
+    printf(DelimString);
+    printf("\tFLOAT POINT 32 bit\n");
+    perform_float_reg();
+    perform_float_mem();
+    printf(DelimString);
+    printf("\tDOUBLE 64 bit\n");
+    perform_double_reg();
+    perform_double_mem();
 }
 
 
