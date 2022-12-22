@@ -51,6 +51,24 @@
     <ClCompile Include="in_memory_double.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="integers_8_signed_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_8_unsigned_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_16_signed_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_16_unsigned_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_32_signed_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="integers_32_unsigned_MEM.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="floating.h">
