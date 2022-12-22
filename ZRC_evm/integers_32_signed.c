@@ -154,6 +154,3 @@ void div32_reg_signed(int _size, int32_t* a, int32_t* b)
     }
 }
 
-
-
-

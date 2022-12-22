@@ -177,6 +177,3 @@ void AND8_reg_signed(int _size, int8_t* a, int8_t* b)
         loop CYCLE;
     }
 }
-
-
-

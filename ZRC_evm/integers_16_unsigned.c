@@ -59,13 +59,13 @@ void mul16_reg_unsigned(int _size, int16_t* a, int16_t* b)
         mov ecx, _size;
         mov edi, a;
         mov esi, b;
-    CYCLE:
-        mov ax, [esi];
-        mov bx, [edi];
-        mul bx;
-        add esi, 2
-        add edi, 2
-    loop CYCLE;
+        CYCLE:
+            mov ax, [esi];
+            mov bx, [edi];
+            mul bx;
+            add esi, 2
+            add edi, 2
+        loop CYCLE;
     }
 }
 
@@ -164,6 +164,8 @@ void AND16_reg_unsigned(int _size, int16_t* a, int16_t* b)
         loop CYCLE;
     }
 }
+
+
 
 
 

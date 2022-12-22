@@ -1,8 +1,5 @@
 #include "integers.h"
 
-
-
-
 void NOT32_reg_unsigned(int _size, int32_t* a)
 {
     __asm
@@ -140,7 +137,6 @@ void div32_reg_unsigned(int _size, int32_t* a, int32_t* b)
         loop CYCLE;
     }
 }
-
 
 
 
