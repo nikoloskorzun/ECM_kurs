@@ -362,7 +362,7 @@ void perform_signed_int32_reg()
 
     timeit(add32_reg_signed, "ADD REG, REG", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_reg_signed, "SUB REG, REG", 3, NumberOfElementsArray, x_32, y_32);
-    timeit(mul32_reg_signed, "MUL REG, REG", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_reg_signed, "IMUL REG, REG", 3, NumberOfElementsArray, x_32, y_32);
     
     free(x_32);
     free(y_32);
@@ -383,7 +383,7 @@ void perform_signed_int32_reg()
         } while (y_for_div_32[i] == (((int)1)<<31));//eliminate integer overflow -2^15
     }
 
-    timeit(div32_reg_signed, "DIV REG, REG", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32); //y/x
+    timeit(div32_reg_signed, "IDIV REG, REG", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32); //y/x
 
     free(x_for_div_32);
     free(y_for_div_32);
@@ -623,6 +623,7 @@ void perform_signed_int8_mem()
     timeit(OR8_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(add8_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(sub8_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(mul8_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
 
     free(x_8);
     free(y_8);
@@ -643,7 +644,7 @@ void perform_signed_int8_mem()
         } while (y_for_div_8[i] == (-128));//eliminate integer overflow -2^7
     }
 
-    timeit(div8_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
+    timeit(div8_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_8, y_for_div_8);//y/x
 
     free(x_for_div_8);
     free(y_for_div_8);
@@ -733,6 +734,7 @@ void perform_signed_int16_mem()
     timeit(OR16_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(add16_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(sub16_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(mul16_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
 
     free(x_16);
     free(y_16);
@@ -753,7 +755,7 @@ void perform_signed_int16_mem()
         } while (y_for_div_16[i] == (-32768));//eliminate integer overflow -2^15
     }
 
-    timeit(div16_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
+    timeit(div16_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_16, y_for_div_16);//y/x
 
     free(x_for_div_16);
     free(y_for_div_16);
@@ -843,6 +845,7 @@ void perform_signed_int32_mem()
     timeit(OR32_mem_signed_right, "OR REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(add32_mem_signed_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_mem_signed_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_mem_signed, "IMUL REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
 
     free(x_32);
     free(y_32);
@@ -863,7 +866,7 @@ void perform_signed_int32_mem()
         } while (y_for_div_32[i] == ((int)(1))<<31);//
     }
 
-    timeit(div32_mem_signed, "DIV REG, MEM", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
+    timeit(div32_mem_signed, "IDIV REG, MEM", 3, NumberOfElementsArray, x_for_div_32, y_for_div_32);//y/x
 
     free(x_for_div_32);
     free(y_for_div_32);
@@ -947,6 +950,7 @@ void perform_unsigned_int8_mem()
     timeit(OR8_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(add8_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
     timeit(sub8_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
+    timeit(mul8_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_8, y_8);
 
     free(x_8);
     free(y_8);
@@ -1048,6 +1052,7 @@ void perform_unsigned_int16_mem()
     timeit(OR16_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(add16_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
     timeit(sub16_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
+    timeit(mul16_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_16, y_16);
 
     free(x_16);
     free(y_16);
@@ -1148,6 +1153,7 @@ void perform_unsigned_int32_mem()
     timeit(OR32_mem_unsigned_right, "OR REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(add32_mem_unsigned_right, "ADD REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
     timeit(sub32_mem_unsigned_right, "SUB REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
+    timeit(mul32_mem_unsigned, "MUL REG, MEM", 3, NumberOfElementsArray, x_32, y_32);
 
     free(x_32);
     free(y_32);
