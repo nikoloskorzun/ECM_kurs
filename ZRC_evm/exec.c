@@ -1236,7 +1236,7 @@ void perform_float_reg()
     timeit(sqrt_floating, "FSQRT REG", 2, NumberOfElementsArray, x_f);
     timeit(l2_floating, "FYL2X REG", 2, NumberOfElementsArray, x_f);
     timeit(ln_floating, "LN REG", 2, NumberOfElementsArray, x_f);
-
+    timeit(pow2_floating, "F2XM1 REG", 2, NumberOfElementsArray, x_f);
     // trigan
     printf(TriganometricOperationString);
     timeit(sin_floating, "FSIN REG", 2, NumberOfElementsArray, x_f);
@@ -1281,17 +1281,18 @@ void perform_double_reg()
     // binar
 
     printf(BinaryOperationString);
-    timeit(add_double, "ADD REG, REG", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_double, "SUB REG, REG", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_double, "MUL REG, REG", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_double, "DIV REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(add_double, "FADD REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_double, "FSUB REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_double, "FMUL REG, REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_double, "FDIV REG, REG", 3, NumberOfElementsArray, x_d, y_d);
 
     // unar
 
     printf(UnarOperationString);
     timeit(sqrt_double, "FSQRT REG, REG", 2, NumberOfElementsArray, x_d);
     timeit(l2_double, "FYL2X REG", 2, NumberOfElementsArray, x_d);
-    timeit(ln_double, "LN REG, REG", 2, NumberOfElementsArray, x_d);
+    timeit(ln_double, "LN REG", 2, NumberOfElementsArray, x_d);
+    timeit(pow2_double, "F2XM1 REG", 2, NumberOfElementsArray, x_d);
     // trigan
 
     printf(TriganometricOperationString);
@@ -1314,10 +1315,10 @@ void perform_double_mem()
         x_d[i] = rand();
         y_d[i] = rand();
     }
-    timeit(add_mem_double, "ADD REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(sub_mem_double, "SUB REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(mul_mem_double, "MUL REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
-    timeit(div_mem_double, "DIV REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(add_mem_double, "FADD REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sub_mem_double, "FSUB REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(mul_mem_double, "FMUL REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(div_mem_double, "FDIV REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
 
     free(x_d);
     free(y_d);
@@ -1326,7 +1327,7 @@ void perform_double_mem()
 
 void perform_floats() {
     printf(DelimString);
-    printf("\tFLOAT POINT 32 bit\n");
+    printf("\tFLOAT 32 bit\n");
     perform_float_reg();
     perform_float_mem();
     printf(DelimString);

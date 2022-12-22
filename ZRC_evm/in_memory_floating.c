@@ -4,8 +4,8 @@
 void add_mem_floating(int _size, float32_t* a, float32_t* b) {
 	__asm {
 		finit; init co - processor
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 	Addition:
 		// place floating into floating register
@@ -22,8 +22,8 @@ void sub_mem_floating(int _size, float32_t* a, float32_t* b)
 {
 	__asm {
 		finit; init co - processor
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 	Subtraction:
 		// place floating into floating register
@@ -41,8 +41,8 @@ void mul_mem_floating(int _size, float32_t* a, float32_t* b)
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 	Multiplication:
 		// place floating into floating register
@@ -59,8 +59,8 @@ void div_mem_floating(int _size, float32_t* a, float32_t* b)
 {
 	__asm {
 		finit; init co - proc
-		mov eax, a;
-		mov ebx, b;
+		lea eax, a;
+		lea ebx, b;
 		mov ecx, _size;
 	Division:
 		// place floating into floating register
