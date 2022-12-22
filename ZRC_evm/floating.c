@@ -158,7 +158,7 @@ void pow2_floating(int _size, double64_t* a)
 		fadd;
 		FSTP st(1);
 		FSTP st(0);
-		add eax, 8;
+		add eax, 4;
 		loop POW2;
 	}
 }
