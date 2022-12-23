@@ -1,6 +1,7 @@
 #include "exec.h"
 
 
+
 inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) {
     /// <ADDmary>
     /// ... is char*, zero point is argcount
@@ -11,13 +12,12 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
     /// loop number is a counter of usages of timeit function
     static int loop_number = 1;
     int accum = 0;
-    int startup_ms, end_ms;
+    DWORD  startup_ms, end_ms;
     double time_spent = 0.0;
-
-
+    
     char format1[] = "%i. %s";
     char format2[] = "\n\t\tTIME IS %i\n";
-
+    
     __asm {
         CMP argcount, 0
         JE ZERO_ARG
@@ -40,14 +40,14 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
 
         ZERO_ARG:
 
-        call clock; get start ticks
+        call GetTickCount; get start ticks
         mov startup_ms, eax;
         
         call[func];
         
         add esp, accum;
         
-        call clock; get old ticks
+        call GetTickCount; get old ticks
         mov end_ms, eax;
 
 
@@ -160,22 +160,13 @@ void performance_comparison()
     char format[] = "Max memory usage is %u + %u Mbyte\nAmount of elements = %u\n\n\n";
     char format2[] = "EMPTY CYCLE FUNCTION";
     unsigned s = NumberOfElementsArray;
-    __asm {
-        push s
-        mov eax, 1024
-        mul eax
-        mov ebx, eax
-        mov eax, s
-        mov ecx, 8
-        mul ecx
-        div ebx
-        push eax
-        push eax
-        lea eax, format
-        push eax
-        call printf
+    
+    printf(format, (NumberOfElementsArray * 8) / (1024 * 1024), (NumberOfElementsArray * 8) / (1024 * 1024), NumberOfElementsArray);
 
-        add esp, 16
+    
+    
+    __asm {
+       
 
 
         push s
@@ -198,7 +189,6 @@ void performance_comparison()
         call perform_floats
 
     }
-    //printf("", (NumberOfElementsArray * 8) / (1024 * 1024), (NumberOfElementsArray * 8) / (1024 * 1024));
 
     //zero time test
     //timeit(empty_function, "EMPTY CYCLE FUNCTION", 1, NumberOfElementsArray);
@@ -1234,12 +1224,14 @@ void perform_float_reg()
     // unar
     printf(UnarOperationString);
     timeit(sqrt_floating, "FSQRT REG", 2, NumberOfElementsArray, x_f);
+    timeit(abs_floating, "FABS REG", 2, NumberOfElementsArray, x_f);
     timeit(l2_floating, "FYL2X REG", 2, NumberOfElementsArray, x_f);
     timeit(ln_floating, "LN REG", 2, NumberOfElementsArray, x_f);
     timeit(pow2_floating, "F2XM1 REG", 2, NumberOfElementsArray, x_f);
     // trigan
     printf(TriganometricOperationString);
     timeit(sin_floating, "FSIN REG", 2, NumberOfElementsArray, x_f);
+    timeit(cos_floating, "FCOS REG", 2, NumberOfElementsArray, x_f);
     timeit(tan_floating, "FPTAN REG", 2, NumberOfElementsArray, x_f);
     timeit(atan_floating, "FPATAN REG", 2, NumberOfElementsArray, x_f);
     free(x_f);
@@ -1290,6 +1282,7 @@ void perform_double_reg()
 
     printf(UnarOperationString);
     timeit(sqrt_double, "FSQRT REG, REG", 2, NumberOfElementsArray, x_d);
+    timeit(abs_double, "FABS REG, REG", 2, NumberOfElementsArray, x_d);
     timeit(l2_double, "FYL2X REG", 2, NumberOfElementsArray, x_d);
     timeit(ln_double, "LN REG", 2, NumberOfElementsArray, x_d);
     timeit(pow2_double, "F2XM1 REG", 2, NumberOfElementsArray, x_d);
@@ -1297,6 +1290,7 @@ void perform_double_reg()
 
     printf(TriganometricOperationString);
     timeit(sin_double, "FSIN REG", 2, NumberOfElementsArray, x_d);
+    timeit(cos_double, "FCOS REG", 2, NumberOfElementsArray, x_d);
     timeit(tan_double, "FPTAN REG", 2, NumberOfElementsArray, x_d);
     timeit(atan_double, "FPATAN REG", 2, NumberOfElementsArray, x_d);
 

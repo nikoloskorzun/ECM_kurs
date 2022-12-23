@@ -1,13 +1,14 @@
 #ifndef __EXECUTOR__
 
+#define __EXECUTOR__
+
 #ifndef NumberOfElementsArray
-	#define NumberOfElementsArray 100i32
+	#define NumberOfElementsArray 1000000i32
 #endif
 
 #ifndef DelimString
 	#define DelimString "========================================================================\n"
 #endif
-
 
 #ifndef UnarOperationString
 	#define UnarOperationString "\nUnary operations:\n\n"
@@ -16,11 +17,10 @@
 #ifndef BinaryOperationString
 	#define BinaryOperationString "\nBinary operations:\n\n"
 #endif
+
 #ifndef TriganometricOperationString
 	#define TriganometricOperationString "\nTriganometric operations:\n\n"
 #endif 
-
-
 
 
 
@@ -29,12 +29,14 @@
 #include "time.h"
 #include "malloc.h"
 
+#include "windows.h"//ha-ha The best way to calculate time...
+
 #include "types.h"
 #include "floating.h"
 #include "integers.h"
 
 
-#define __EXECUTOR__
+
 inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...);
 
 void performance_comparison();
