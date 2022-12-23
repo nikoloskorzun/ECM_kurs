@@ -10,6 +10,9 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
     /// <param name="argcount">count of arguments</param>
     /// <param name="">FUNCTION UNNECESSORY-ARGUMENTS</param>
     /// loop number is a counter of usages of timeit function
+    
+   
+    
     static int loop_number = 1;
     int accum = 0;
     DWORD  startup_ms, end_ms;
@@ -17,8 +20,35 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
     
     char format1[] = "%i. %s";
     char format2[] = "\n\t\tTIME IS %i\n";
-    
+
+
+    char FN[] = "output.txt";
+    char MODE[] = "a";
+    FILE* F1;
+    __asm
+    {
+
+        lea eax, MODE
+        push eax
+        lea eax, FN
+        push eax
+        call fopen
+        add esp, 8
+        mov F1, eax
+
+
+    }
+
+
+
     __asm {
+
+
+
+
+
+
+
         CMP argcount, 0
         JE ZERO_ARG
 
@@ -57,9 +87,10 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
         push eax
         lea eax, format1
         push eax
-
-        call printf
-        add esp, 12;
+            mov eax, F1
+        push eax
+        call fprintf
+        add esp, 16;
 
         mov eax, end_ms
         mov ebx, startup_ms
@@ -67,11 +98,26 @@ inline void timeit(FunctionPtr* func, char* text_hint, const int argcount, ...) 
         push eax
         lea eax, format2
         push eax
-        call printf
-        add esp, 8;
+            mov eax, F1
+            push eax
+        call fprintf
+        add esp, 12 ;
+
 
         inc loop_number
     }
+
+
+    __asm
+    {
+
+        push F1
+        call fclose
+
+        add esp, 4
+    }
+
+
     //printf("%i. %s", loop_number, text_hint);
     //printf("\n\t\tTIME IS %i\n", (end_ms - startup_ms));
 }
@@ -1233,6 +1279,8 @@ void perform_float_reg()
     timeit(sin_floating, "FSIN REG", 2, NumberOfElementsArray, x_f);
     timeit(cos_floating, "FCOS REG", 2, NumberOfElementsArray, x_f);
     timeit(tan_floating, "FPTAN REG", 2, NumberOfElementsArray, x_f);
+    timeit(cotan_floating, "CTG REG", 3, NumberOfElementsArray, x_f, y_f);
+    timeit(sincos_floating, "FSINCOS REG", 3, NumberOfElementsArray, x_f, y_f);
     timeit(atan_floating, "FPATAN REG", 2, NumberOfElementsArray, x_f);
     free(x_f);
     free(y_f);
@@ -1292,6 +1340,9 @@ void perform_double_reg()
     timeit(sin_double, "FSIN REG", 2, NumberOfElementsArray, x_d);
     timeit(cos_double, "FCOS REG", 2, NumberOfElementsArray, x_d);
     timeit(tan_double, "FPTAN REG", 2, NumberOfElementsArray, x_d);
+    timeit(cotan_double, "CTG REG", 3, NumberOfElementsArray, x_d, y_d);
+    timeit(sincos_double, "FSINCOS REG", 3, NumberOfElementsArray, x_d, y_d);
+
     timeit(atan_double, "FPATAN REG", 2, NumberOfElementsArray, x_d);
 
     free(x_d);
@@ -1309,6 +1360,8 @@ void perform_double_mem()
         x_d[i] = rand();
         y_d[i] = rand();
     }
+
+    
     timeit(add_mem_double, "FADD REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
     timeit(sub_mem_double, "FSUB REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
     timeit(mul_mem_double, "FMUL REG, MEM", 3, NumberOfElementsArray, x_d, y_d);
@@ -1320,6 +1373,8 @@ void perform_double_mem()
 
 
 void perform_floats() {
+
+
     printf(DelimString);
     printf("\tFLOAT 32 bit\n");
     perform_float_reg();

@@ -3,7 +3,7 @@
 #define __EXECUTOR__
 
 #ifndef NumberOfElementsArray
-	#define NumberOfElementsArray 1000000i32
+	#define NumberOfElementsArray 10000i32
 #endif
 
 #ifndef DelimString

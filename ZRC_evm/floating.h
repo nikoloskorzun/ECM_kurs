@@ -24,10 +24,12 @@ void pow2_floating(int _size, double64_t* a);
 void sin_floating(int _size, float32_t* a);
 void cos_floating(int _size, float32_t* a);
 void tan_floating(int _size, float32_t* a);
+void cotan_floating(int _size, float32_t* a);
+void sincos_floating(int _size, float32_t* a);
 void atan_floating(int _size, float32_t* a);
 
 // double arithmetics
-void add_double(int size, double64_t* a, double64_t b);
+void add_double(int _size, double64_t* a, double64_t b);
 void sub_double(int _size, double64_t* a, double64_t* b);
 void mul_double(int _size, double64_t* a, double64_t* b);
 void div_double(int _size, double64_t* a, double64_t* b);
@@ -41,6 +43,8 @@ void pow2_double(int _size, double64_t* a);
 void sin_double(int _size, double64_t* a);
 void cos_double(int _size, double64_t* a);
 void tan_double(int _size, double64_t* a);
+void cotan_double(int _size, double64_t* a);
+void sincos_double(int _size, double64_t* a);
 void atan_double(int _size, double64_t* a);
 
 

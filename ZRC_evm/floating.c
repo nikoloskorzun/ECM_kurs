@@ -4,9 +4,9 @@
 void add_floating(int _size, float32_t* a, float32_t* b) {
 	__asm {
 		finit				; init co-processor
-		mov eax, a;
-		mov ebx, b;
-		mov ecx, _size;
+		mov eax, a			;
+		mov ebx, b			;
+		mov ecx, _size		;
 		Addition:
 			// place floating into floating register
 			fld		[eax]	; load a[i] into co-proc
@@ -236,6 +236,38 @@ void tan_floating(int _size, float32_t* a)
 		FSTP st;
 		add eax, 4;
 	loop TAN;
+	}
+}void cotan_floating(int _size, float32_t* a)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ecx, _size;
+	TAN:
+		// tan of a[i] 
+		fld[eax]
+		FPTAN; partual tangens
+		FDIV
+		// drop from stack
+		FSTP st;
+		add eax, 4;
+	loop TAN;
+	}
+}
+void sincos_floating(int _size, float32_t* a)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ecx, _size;
+	SINCOS:
+		// sin and cos of a[i] 
+		fld[eax]
+		FSINCOS; partual tangens
+		// drop from stack
+		FSTP st;
+		add eax, 4;
+	loop SINCOS;
 	}
 }
 

@@ -219,6 +219,40 @@ void tan_double(int _size, double64_t* a)
 	loop TAN;
 	}
 }
+void cotan_double(int _size, double64_t* a)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ecx, _size;
+	TAN:
+		// tan of a[i] 
+		fld[eax]
+		FPTAN; partual tangens
+		// drop from stack
+		FDIV
+		
+		FSTP st;
+		add eax, 8;
+	loop TAN;
+	}
+}
+void sincos_double(int _size, double64_t* a)
+{
+	__asm {
+		finit; init co - proc
+		mov eax, a;
+		mov ecx, _size;
+	SINCOS:
+		// SIN and COS of a[i] 
+		fld[eax]
+		FSINCOS; 
+		// drop from stack
+		FSTP st;
+		add eax, 8;
+	loop SINCOS;
+	}
+}
 
 void atan_double(int _size, double64_t* a)
 {
