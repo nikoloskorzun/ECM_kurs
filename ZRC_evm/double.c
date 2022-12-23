@@ -3,8 +3,8 @@
 void add_double(int _size, double64_t* a, double64_t* b) {
 	__asm {
 		finit; init co - processor
-		lea eax, a;
-		lea ebx, b;
+		mov eax, a;
+		mov ebx, b;
 		mov ecx, _size;
 	Addition:
 		// place floating into floating register
@@ -24,8 +24,8 @@ void sub_double(int _size, double64_t* a, double64_t* b)
 {
 	__asm {
 		finit; init co - processor
-		lea eax, a;
-		lea ebx, b;
+		mov eax, a;
+		mov ebx, b;
 		mov ecx, _size;
 	Subtraction:
 		// place floating into floating register
@@ -43,8 +43,8 @@ void mul_double(int _size, double64_t* a, double64_t* b)
 {
 	__asm {
 		finit			; init co-proc
-		lea eax, a		;
-		lea ebx, b		;
+		mov eax, a		;
+		mov ebx, b		;
 		mov ecx, _size	;
 		Multiplication:
 			// place floating into floating register
@@ -62,8 +62,8 @@ void div_double(int _size, double64_t* a, double64_t* b)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
-		lea ebx, b;
+		mov eax, a;
+		mov ebx, b;
 		mov ecx, _size;
 	Division:
 		// place floating into floating register
@@ -81,7 +81,7 @@ void sqrt_double(int _size, double64_t* a)
 {
 	__asm {
 		finit			; init co - proc
-		lea eax, a		;
+		mov eax, a		;
 		mov ecx, _size	;
 
 	SQRT:
@@ -98,7 +98,7 @@ void l2_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 
 	LOG2:
@@ -118,7 +118,7 @@ void ln_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 	Ln:
 		// place floating into floating register
@@ -137,7 +137,7 @@ void pow2_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 	POW2:
 		// place floating into floating register
@@ -156,7 +156,7 @@ void sin_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 	SIN:
 		// sin of a[i] 
@@ -173,7 +173,7 @@ void tan_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 	TAN:
 		// tan of a[i] 
@@ -190,7 +190,7 @@ void atan_double(int _size, double64_t* a)
 {
 	__asm {
 		finit; init co - proc
-		lea eax, a;
+		mov eax, a;
 		mov ecx, _size;
 	ATAN:
 		// tan of a[i] 
